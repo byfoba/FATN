@@ -1,0 +1,17 @@
+groups:
+  - name: bridge-alerts
+    rules:
+      - alert: HighIngestionLatency
+        expr: ingestion_latency_ms > 5000
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Bridge ingestion latency above 5s"
+      - alert: FrequentReconnects
+        expr: increase(reconnect_count[5m]) > 3
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Bridge reconnect loop detected"
