@@ -62,6 +62,10 @@ Copy `infra/env.example` into deployment environments:
 - Frontend: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - Bridge: `API_BASE_URL`, `TICKER`, `EXCHANGE`, `ANALYSIS_CADENCE_SEC`
 
+## Guía paso a paso (español, modo live)
+
+Si eres principiante y quieres un walkthrough detallado para dejar el sistema en live, sigue: `docs/LIVE_SETUP_ES.md`.
+
 ## Run Locally
 
 ```bash
