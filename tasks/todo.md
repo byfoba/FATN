@@ -1,5 +1,15 @@
 # Task Plan
 
+## Current Task: Fix Vercel frontend deploy blockers
+
+- [x] Reproduce or inspect the failing build conditions from Vercel logs.
+- [x] Upgrade frontend Next.js to a patched version that resolves CVE-2025-66478.
+- [x] Add missing ESLint dependency in the frontend workspace so `next build` can run lint/type checks.
+- [x] Run local install + frontend build to verify the fix.
+- [x] Record review notes and outcomes.
+
+## Previous Task (MVP scaffold)
+
 - [x] Capture project scope and constraints from user brief.
 - [x] Scaffold repository structure for frontend, API, bridge, infra, model, shared, tests.
 - [x] Implement shared TypeScript contracts and validation schemas.
@@ -15,6 +25,6 @@
 
 ## Review
 
-- Repository now includes an end-to-end MVP scaffold with strict context/analyze contracts, bridge playback mode, schema validation, and deployment docs.
-- Runtime install/testing is currently blocked in this environment due npm registry 403 policy on package retrieval; commands and impact documented below.
-- All required deliverable folders and baseline code stubs were generated and wired together for handoff.
+- Updated `frontend/package.json` to pin Next.js to `15.2.4` (patched line) and add frontend-local lint dependencies expected by Vercel builds.
+- Normalized frontend dependency split by moving TypeScript + `@types/*` to `devDependencies`.
+- Local verification was partially blocked by registry policy (`npm`/`yarn` 403 from registry.npmjs.org), so fresh dependency installation could not be completed in this environment.
