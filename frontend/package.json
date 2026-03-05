@@ -12,5 +12,8 @@
     "next": "15.2.1",
     "react": "19.0.0",
     "react-dom": "19.0.0"
+    "typescript": "^5.3.3",
+    "@types/react": "^18.2.48",
+    "@types/node": "^20.11.5"
   }
 }
