@@ -7,4 +7,4 @@ sudo ufw allow OpenSSH
 sudo ufw allow 9464/tcp
 sudo ufw enable
 
-echo "Install IB Gateway manually or via container, then run bridge with systemd."
+echo "Install/configure NinjaTrader data feed connector on the VPS, then run bridge with systemd."
