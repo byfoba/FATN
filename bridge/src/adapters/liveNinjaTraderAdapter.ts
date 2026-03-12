@@ -1,7 +1,7 @@
 import { Tick } from '../core/types';
 
-export async function* liveIbTicks(): AsyncGenerator<Tick> {
-  // TODO: integrate IB Gateway/TWS API client and emit real ticks.
+export async function* liveNinjaTraderTicks(): AsyncGenerator<Tick> {
+  // TODO: integrate NinjaTrader data feed client and emit real ticks.
   // Placeholder generator keeps service bootable in live mode.
   while (true) {
     await new Promise((r) => setTimeout(r, 1000));

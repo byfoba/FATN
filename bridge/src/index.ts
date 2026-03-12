@@ -2,7 +2,7 @@ import express from 'express';
 import client from 'prom-client';
 import { aggregate1s, createSnapshotId, dedupeTicks } from './core/aggregator';
 import { loadTicksFromCsv } from './adapters/playbackAdapter';
-import { liveIbTicks } from './adapters/liveIbAdapter';
+import { liveNinjaTraderTicks } from './adapters/liveNinjaTraderAdapter';
 import { postContext } from './core/publisher';
 import { BridgeConfig, Tick } from './core/types';
 import { ReplayBuffer } from './core/replayBuffer';
@@ -83,7 +83,7 @@ async function run() {
   while (true) {
     try {
       const batch: Tick[] = [];
-      for await (const tick of liveIbTicks()) {
+      for await (const tick of liveNinjaTraderTicks()) {
         batch.push(tick);
         if (batch.length >= 20) {
           await processBatch([...batch]);

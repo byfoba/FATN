@@ -1,6 +1,6 @@
 # Real-Time Futures Market Bias & Scenario Analyzer (MVP)
 
-Private MVP for two users to analyze CME futures session bias using live data from IB/NinjaTrader and Gemini 3.0 Flash.
+Private MVP for two users to analyze CME futures session bias using live data from NinjaTrader CME Level 1 and Gemini 3.0 Flash.
 
 > **INTERNAL USE ONLY — DO NOT REDISTRIBUTE MARKET DATA**
 
@@ -44,17 +44,16 @@ Private MVP for two users to analyze CME futures session bias using live data fr
 2. Run SQL in `infra/supabase_schema.sql`.
 3. Ensure tables exist: `users`, `snapshots`, `analyses`, `analysis_queue`.
 
-## IB / NinjaTrader / VPS Setup
+## NinjaTrader CME Level 1 / VPS Setup
 
-1. Activate **CME L1 Non-Professional** market data in Interactive Brokers Account Management.
-2. Prefer **IB Gateway headless** on VPS for stability.
-3. Optional: NinjaTrader GUI on Windows VPS if strategy requires it.
-4. Provision VPS (Ubuntu or Windows).
-5. On Ubuntu, run:
+1. Activate **NinjaTrader CME Level 1** market data subscription in your NinjaTrader account.
+2. Provision VPS (Ubuntu or Windows).
+3. Run NinjaTrader data feed/connector process on the VPS.
+4. On Ubuntu, run:
    ```bash
    ./infra/vps_setup_ubuntu.sh
    ```
-6. Deploy bridge service with env vars from `infra/env.example`.
+5. Deploy bridge service with env vars from `infra/env.example`.
 
 ## Environment Variables
 Copy `infra/env.example` into deployment environments:
@@ -75,7 +74,7 @@ Bridge playback mode:
 npm run bridge:playback
 ```
 
-Bridge live mode (stub with IB adapter hooks):
+Bridge live mode (stub with NinjaTrader adapter hooks):
 ```bash
 npm run bridge:live
 ```
@@ -109,7 +108,7 @@ npm run bridge:live
 
 ## TODO (Human Required)
 - Insert real Gemini API key and verify pricing/budget limits.
-- Implement full IB Gateway API integration in `liveIbAdapter.ts`.
+- Implement full NinjaTrader API/feed integration in `liveNinjaTraderAdapter.ts`.
 - Configure Supabase auth and replace `demo-user` in frontend.
 - Configure Slack/PagerDuty webhook in alert pipeline.
 
